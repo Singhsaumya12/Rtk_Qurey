@@ -1,25 +1,27 @@
-import { createApi , fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const myApi = createApi({
     reducerPath: "api",
     baseQuery: fetchBaseQuery({
-        baseUrl:"http://localhost:3000/"
+        baseUrl: "http://localhost:3000/",
     }),
+    tagTypes:["Posts"],
     endpoints: (builder) => ({
         getPosts: builder.query({
-            query: () => "posts"}),
+            query: () => "posts",
+        providesTags:["Posts"]   
+        }),
         newPost: builder.mutation({
             query: (post) => ({
-                url: "/posts",
+                url: "posts",
                 method: "POST",
-                
-                body: JSON.stringify(post),
+                body: post,  
+                // headers: { "Content-Type": "application/json" },
             }),
-            // invalidatesTags: ["posts"],
-            // transformResponse: (response) => response.json(),
-         })
+            invalidatesTags: ["Posts"],  
+        }),
     }),
-    
 });
 
-export const { useGetPostsQuery , useNewPostMutation} = myApi;
+export const { useGetPostsQuery, useNewPostMutation } = myApi;

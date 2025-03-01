@@ -1,15 +1,40 @@
 {
-    "posts": [
-      { 
-      "title": "Post1", 
-      "body": "some random postrs", 
+  "posts": [
+    {
+      "title": "Post1",
+      "body": "some random postrs",
       "userId": 23,
-      "id": 1 },
-
-      { 
-       "title": "Post2",
-       "body": "some data", 
-       "userId": 23,
-       "id": 2 }
-    ]
-  }
+      "id": "1"
+    },
+    {
+      "title": "Post2",
+      "body": "some data",
+      "userId": 23,
+      "id": "2"
+    },
+    {
+      "id": "240",
+      "title": "jhjkhk",
+      "body": "nnbm",
+      "userId": 942
+    },
+    {
+      "id": "828",
+      "title": "saumya",
+      "body": "singh",
+      "userId": 139
+    },
+    {
+      "id": "561",
+      "title": "finished",
+      "body": "start",
+      "userId": 200
+    },
+    {
+      "id": 947,
+      "title": "Saumya Singh",
+      "body": "nnnnm",
+      "userId": 810
+    }
+  ]
+}
