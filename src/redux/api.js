@@ -1,4 +1,3 @@
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const myApi = createApi({
@@ -6,22 +5,42 @@ export const myApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: "http://localhost:3000/",
     }),
-    tagTypes:["Posts"],
     endpoints: (builder) => ({
         getPosts: builder.query({
             query: () => "posts",
-        providesTags:["Posts"]   
+            providesTags: ["Posts"], 
         }),
+        
         newPost: builder.mutation({
             query: (post) => ({
-                url: "posts",
+                url: "posts",        
                 method: "POST",
-                body: post,  
-                // headers: { "Content-Type": "application/json" },
+                body: post, 
+                headers: { "Content-Type": "application/json" },
+
             }),
-            invalidatesTags: ["Posts"],  
+            invalidatesTags: ["Posts"], 
         }),
+        
+        updatePost: builder.mutation({
+            query: (post) => ({
+                url: `posts/${post.id}`,
+                method: "PUT",
+                body: post,
+                headers: { "Content-Type": "application/json" },
+            }),
+            invalidatesTags: ["Posts"], 
+        }),
+        
+        deletePost:builder.mutation({
+            query:(postId) => ({
+                url:`posts/${postId}`,
+                method: "DELETE",
+            }),
+            invalidatesTags:["Posts"]
+        })
+
     }),
 });
 
-export const { useGetPostsQuery, useNewPostMutation } = myApi;
+export const { useGetPostsQuery, useNewPostMutation ,useDeletePostMutation ,useUpdatePostMutation} = myApi;
